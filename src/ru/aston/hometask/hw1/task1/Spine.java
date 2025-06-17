@@ -1,4 +1,4 @@
 package ru.aston.hometask.hw1.task1;
 
-public class Spine {
+public record Spine(int countVertebra) {
 }
