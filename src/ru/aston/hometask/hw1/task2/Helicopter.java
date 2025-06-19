@@ -1,13 +1,25 @@
 package ru.aston.hometask.hw1.task2;
 
-public class Helicopter implements CarryCargo {
+import ru.aston.hometask.hw1.task2.parts.Propeller;
+import ru.aston.hometask.hw1.task2.parts.Wheel;
+import ru.aston.hometask.hw1.task2.parts.Wing;
 
-    private Wheel[] wheels;
-    private Propeller[] propeller;
+public class Helicopter extends Vehicle implements CarryCargo {
+
+    public Helicopter(Wheel[] wheels, Propeller[] propellers) {
+        super(
+                new Wing[0],
+                wheels,
+                propellers
+        );
+    }
 
     public Helicopter() {
-        wheels = new Wheel[3];
-        propeller = new Propeller[2];
+        this(
+                new Wheel[]{
+                        new Wheel(20), new Wheel(20), new Wheel(20)},
+                new Propeller[]{new Propeller("Big"), new Propeller("Small")}
+        );
     }
 
     @Override

@@ -1,10 +1,22 @@
 package ru.aston.hometask.hw1.task2;
 
-public class Taxi {
+import ru.aston.hometask.hw1.task2.parts.Propeller;
+import ru.aston.hometask.hw1.task2.parts.Wheel;
+import ru.aston.hometask.hw1.task2.parts.Wing;
 
-    private Wheel[] wheels;
+public class Taxi extends Vehicle {
+
+    public Taxi(Wheel[] wheels) {
+        super(
+                new Wing[0],
+                wheels,
+                new Propeller[0]
+        );
+    }
 
     public Taxi() {
-        wheels = new Wheel[4];
+        this(new Wheel[]{
+                new Wheel(19), new Wheel(19), new Wheel(19), new Wheel(19)}
+        );
     }
 }
