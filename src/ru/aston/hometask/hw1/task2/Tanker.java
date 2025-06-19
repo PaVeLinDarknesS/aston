@@ -1,11 +1,23 @@
 package ru.aston.hometask.hw1.task2;
 
-public class Tanker implements CarryCargo {
+import ru.aston.hometask.hw1.task2.parts.Propeller;
+import ru.aston.hometask.hw1.task2.parts.Wheel;
+import ru.aston.hometask.hw1.task2.parts.Wing;
 
-    private Propeller[] propeller;
+public class Tanker extends Vehicle implements CarryCargo {
+
+    public Tanker(Propeller[] propellers) {
+        super(
+                new Wing[0],
+                new Wheel[0],
+                propellers
+        );
+    }
 
     public Tanker() {
-        propeller = new Propeller[2];
+        this(
+                new Propeller[]{new Propeller("Left"), new Propeller("Right")}
+        );
     }
 
     @Override
