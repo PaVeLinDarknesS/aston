@@ -22,9 +22,7 @@ public class Skin implements Cloneable {
     @Override
     public Skin clone() {
         try {
-            Skin clone = (Skin) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
-            return clone;
+            return (Skin) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }

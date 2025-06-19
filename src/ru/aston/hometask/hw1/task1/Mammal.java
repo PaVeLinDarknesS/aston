@@ -14,7 +14,7 @@ public abstract class Mammal extends Animal {
         this.skin = skin;
     }
 
-    public Skin molt(){
+    public Skin molt() {
         Skin oldSkin = skin;
         skin = oldSkin.clone();
         return oldSkin;

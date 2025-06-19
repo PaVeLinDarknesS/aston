@@ -1,14 +1,13 @@
 package ru.aston.hometask.hw1.task1;
 
 import ru.aston.hometask.hw1.task1.habitat.Habitat;
-import ru.aston.hometask.hw1.task1.habitat.Water;
 import ru.aston.hometask.hw1.task1.skin.Skin;
 
 public class Whale extends Mammal {
 
 
     public Whale(String name) {
-        super(name, new Water(), new Spine(40),new Skin("Thick skin"));
+        super(name, Habitat.WATER, new Spine(40), new Skin("Thick skin"));
     }
 
     @Override

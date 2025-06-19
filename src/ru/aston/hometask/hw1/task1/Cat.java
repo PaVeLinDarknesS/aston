@@ -1,14 +1,12 @@
 package ru.aston.hometask.hw1.task1;
 
-import ru.aston.hometask.hw1.task1.habitat.Earth;
 import ru.aston.hometask.hw1.task1.habitat.Habitat;
-import ru.aston.hometask.hw1.task1.skin.Skin;
 import ru.aston.hometask.hw1.task1.skin.Wool;
 
 public class Cat extends Mammal {
 
     public Cat(String name) {
-        super(name, new Earth("People's House"), new Spine(27), new Wool("Short wool"));
+        super(name, Habitat.PEOPLE_HOUSE, new Spine(27), new Wool("Short wool"));
     }
 
     @Override

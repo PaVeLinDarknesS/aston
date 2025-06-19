@@ -1,10 +1,10 @@
 package ru.aston.hometask.hw1.task1;
 
-import ru.aston.hometask.hw1.task1.habitat.Water;
+import ru.aston.hometask.hw1.task1.habitat.Habitat;
 
 public class Fish extends Animal {
     public Fish(String name) {
-        super(name, new Water());
+        super(name, Habitat.WATER);
     }
 
     @Override

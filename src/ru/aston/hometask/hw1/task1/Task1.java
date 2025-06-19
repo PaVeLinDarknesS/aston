@@ -10,7 +10,7 @@ public class Task1 {
         Whale whale = new Whale("Blue whale");
         Fish fish = new Fish("Goldfish");
 
-        Animal[] animals = new Animal[]{fish,whale,bear,cat};
+        Animal[] animals = new Animal[]{fish, whale, bear, cat};
 
         for (Animal animal : animals) {
             System.out.println("__________");
