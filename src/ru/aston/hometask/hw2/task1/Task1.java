@@ -2,12 +2,48 @@ package ru.aston.hometask.hw2.task1;
 
 import ru.aston.hometask.hw2.task1.list.MyArrayList;
 import ru.aston.hometask.hw2.task1.list.MyList;
+import ru.aston.hometask.hw2.task1.set.MyHashSet;
+import ru.aston.hometask.hw2.task1.set.MySet;
 
 import java.util.List;
 
 public class Task1 {
 
     public static void main(String[] args) {
+
+        checkList();
+
+        checkSet();
+    }
+
+    private static void checkSet() {
+
+        System.out.println("\n\tSet examples");
+
+        MySet<String> mySet = new MyHashSet<>(0.1F,10);
+
+        mySet.add("123");
+        mySet.add("222");
+        mySet.add("321");
+        mySet.add("122");
+        mySet.add("125");
+        mySet.add("127");
+        mySet.add("132");
+        mySet.add("431");
+
+        System.out.println("Size (expect 8) - " + mySet.size());
+        System.out.println("Added exist value - " + mySet.add("123"));
+        System.out.println("Contain exist value - " + mySet.contains("123"));
+        System.out.println("Remove exist value - " + mySet.remove("222"));
+        System.out.println("Contain removed value - " + mySet.contains("222"));
+        System.out.println("Size (expect 7) - " + mySet.size());
+
+    }
+
+
+    private static void checkList() {
+
+        System.out.println("\n\tList examples");
 
         List<String> list = List.of("1", "2", "3", "4", "5", "6", "7", "8");
 
