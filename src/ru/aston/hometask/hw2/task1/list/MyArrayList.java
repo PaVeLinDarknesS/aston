@@ -4,33 +4,33 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
-public class MyArrayList<T> implements MyList<T> {
+public class MyArrayList<E> implements MyList<E> {
 
     public static final int MAX_CAPACITY = Integer.MAX_VALUE - 8;
 
     private static final int DEFAULT_CAPACITY = 10;
 
-    private static final Object[] EMPTY_DATA = {};
+    private final E[] EMPTY_DATA = (E[]) new Object[0];
 
     private int size;
 
-    private Object[] elementData;
+    private E[] elementData;
 
     public MyArrayList() {
-        elementData = new Object[DEFAULT_CAPACITY];
+        elementData = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
     public MyArrayList(int size) {
         if (size > 0) {
-            elementData = new Object[size];
+            elementData = (E[]) new Object[size];
         } else if (size == 0) {
             elementData = EMPTY_DATA;
         } else throw new IllegalArgumentException("Size must be greater than or equals to 0");
     }
 
-    public MyArrayList(Collection<? extends T> c) {
-        Object[] o;
-        if (c == null || (o = c.toArray()).length == 0) {
+    public MyArrayList(Collection<? extends E> c) {
+        E[] o;
+        if (c == null || (o = (E[]) c.toArray()).length == 0) {
             elementData = EMPTY_DATA;
         } else {
             elementData = o;
@@ -40,7 +40,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public boolean add(T element) {
+    public boolean add(E element) {
         checkCapacity(1);
         elementData[size++] = element;
         return true;
@@ -52,22 +52,19 @@ public class MyArrayList<T> implements MyList<T> {
         }
     }
 
-    private Object[] grow(int minCapacity) {
+    private E[] grow(int minCapacity) {
         int oldCapacity = elementData.length;
         if (oldCapacity == 0) {
-            return new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];
+            return (E[]) new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];
         }
         int newCapacity = countNewCapacity(oldCapacity, minCapacity, oldCapacity >> 1);
         return Arrays.copyOf(elementData, newCapacity);
     }
 
     private int countNewCapacity(int oldCapacity, int minGrow, int optimalGrow) {
-
-        // Count perfect Capacity
         int newCapacity = oldCapacity + Math.max(minGrow, optimalGrow);
         if (newCapacity < 0 || MAX_CAPACITY < newCapacity) {
 
-            // Count limit Capacity
             newCapacity = oldCapacity + minGrow;
             if (newCapacity < 0) {
                 throw new OutOfMemoryError("Required capacity is too large");
@@ -80,7 +77,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public void add(int index, T element) {
+    public void add(int index, E element) {
         final int s = this.size;
 
         Objects.checkIndex(index, s);
@@ -93,11 +90,11 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends T> c) {
+    public boolean addAll(Collection<? extends E> c) {
         if (c.isEmpty()) {
             return false;
         }
-        Object[] a = c.toArray();
+        E[] a = (E[]) c.toArray();
         checkCapacity(a.length);
         final int s = size;
         System.arraycopy(a, 0, elementData, s, a.length);
@@ -106,15 +103,15 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public T get(int index) {
+    public E get(int index) {
         Objects.checkIndex(index, size);
-        return (T) elementData[index];
+        return elementData[index];
     }
 
     @Override
-    public boolean remove(Object o) {
+    public boolean remove(E e) {
 
-        int index = this.indexOf(o);
+        int index = this.indexOf(e);
 
         if (index == -1) {
             return false;
@@ -132,29 +129,21 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public T remove(int index) {
+    public E remove(int index) {
         Objects.checkIndex(index, size);
-        Object deletedItem = elementData[index];
+        E deletedItem = elementData[index];
         fastRemove(index);
-        return (T) deletedItem;
+        return deletedItem;
     }
 
     @Override
-    public int indexOf(Object o) {
+    public int indexOf(E e) {
 
         final int s = this.size;
 
-        if (o == null) {
-            for (int i = 0; i < s; i++) {
-                if (elementData[i] == null) {
-                    return i;
-                }
-            }
-        } else {
-            for (int i = 0; i < s; i++) {
-                if (o.equals(elementData[i])) {
-                    return i;
-                }
+        for (int i = 0; i < s; i++) {
+            if (Objects.equals(e, elementData[i])) {
+                return i;
             }
         }
         return -1;

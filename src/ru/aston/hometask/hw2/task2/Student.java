@@ -14,9 +14,9 @@ public class Student {
         this.books = books;
     }
 
-    public Student(String name) {
+    public Student(String name, int bookSize) {
         this.name = name;
-        books = new ArrayList<>(5);
+        books = new ArrayList<>(bookSize);
     }
 
     public String getName() {
@@ -31,7 +31,7 @@ public class Student {
         return books;
     }
 
-    public boolean addBook(Book book){
+    public boolean addBook(Book book) {
         return books.add(book);
     }
 

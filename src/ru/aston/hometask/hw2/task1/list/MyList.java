@@ -12,11 +12,11 @@ public interface MyList<E> {
 
     E get(int index);
 
-    boolean remove(Object o);
+    boolean remove(E e);
 
     E remove(int index);
 
-    int indexOf(Object o);
+    int indexOf(E e);
 
     int size();
 

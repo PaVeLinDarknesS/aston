@@ -1,10 +1,10 @@
 package ru.aston.hometask.hw2.task1.set;
 
-public interface MySet<T> {
+public interface MySet<E> {
 
     int size();
 
-    boolean add(T value);
+    boolean add(E value);
 
     boolean remove(Object o);
 

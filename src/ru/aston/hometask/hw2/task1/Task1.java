@@ -20,7 +20,7 @@ public class Task1 {
 
         System.out.println("\n\tSet examples");
 
-        MySet<String> mySet = new MyHashSet<>(0.1F,10);
+        MySet<String> mySet = new MyHashSet<>(0.1F, 10);
 
         mySet.add("123");
         mySet.add("222");
