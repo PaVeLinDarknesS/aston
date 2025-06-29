@@ -10,7 +10,11 @@ import java.util.List;
 
 public class FileReaderWriter {
 
-    private final Path filePath;
+    private Path filePath;
+
+    public FileReaderWriter(String file) {
+        this("", file);
+    }
 
     public FileReaderWriter(String directory, String file) {
 
@@ -20,7 +24,6 @@ public class FileReaderWriter {
 
         directory = directory.trim();
         file = file.trim();
-
 
         if (directory.isEmpty()) {
             filePath = Path.of(file).toAbsolutePath();
@@ -35,10 +38,6 @@ public class FileReaderWriter {
         }
     }
 
-    public FileReaderWriter(String file) {
-        this("", file);
-    }
-
     public List<String> readFile() throws MyIOException {
         List<String> lines;
         try {
@@ -51,7 +50,7 @@ public class FileReaderWriter {
         return lines;
     }
 
-    public boolean writeInFile(List<String> information) throws MyIOException {
+    public void writeInFile(List<String> information) throws MyIOException {
         try {
             Files.write(filePath, information, StandardCharsets.UTF_8,
                     StandardOpenOption.CREATE,
@@ -59,11 +58,14 @@ public class FileReaderWriter {
         } catch (IOException e) {
             throw new MyIOException(String.format("Can't write in file - '%s' ", filePath), e);
         }
-        return true;
+        System.out.println("Information was wrote");
     }
 
     public String getFilePath() {
         return filePath.toString();
     }
 
+    public void changePath(FileReaderWriter fileReaderWriter) {
+        filePath = fileReaderWriter.filePath;
+    }
 }
