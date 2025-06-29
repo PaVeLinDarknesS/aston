@@ -37,7 +37,6 @@ public class Task1 {
         System.out.println("Remove exist value - " + mySet.remove("222"));
         System.out.println("Contain removed value - " + mySet.contains("222"));
         System.out.println("Size (expect 7) - " + mySet.size());
-
     }
 
 
@@ -82,8 +81,5 @@ public class Task1 {
             System.out.print(myList.get(i) + " ");
         }
         System.out.println();
-
     }
-
-
 }

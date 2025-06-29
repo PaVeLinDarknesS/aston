@@ -10,5 +10,4 @@ public record Book(String title, String author, Integer size, Integer year) {
                 ", year=" + year +
                 '}';
     }
-
 }

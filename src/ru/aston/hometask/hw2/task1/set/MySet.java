@@ -9,5 +9,4 @@ public interface MySet<E> {
     boolean remove(Object o);
 
     boolean contains(Object o);
-
 }

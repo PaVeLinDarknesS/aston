@@ -36,7 +36,6 @@ public class MyArrayList<E> implements MyList<E> {
             elementData = o;
             size = o.length;
         }
-
     }
 
     @Override
