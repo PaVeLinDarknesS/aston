@@ -7,10 +7,9 @@ import ru.aston.hometask.hw5.validator.LengthValidator;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FileDictionary implements Dictionary, NounGenerator {
 
@@ -24,11 +23,11 @@ public class FileDictionary implements Dictionary, NounGenerator {
 
     public Set<String> getDictionary() {
         try {
-            List<String> list = Files.readAllLines(filePath)
+            return Files.readAllLines(filePath)
                     .stream()
                     .filter(lengthValidator::validate)
-                    .toList();
-            return new HashSet<>(list);
+                    .collect(Collectors.toSet());
+
         } catch (IOException ex) {
             throw new IllegalArgumentException(ex);
         }
@@ -46,6 +45,6 @@ public class FileDictionary implements Dictionary, NounGenerator {
                 .skip(new Random().nextInt(dictionary.size()))
                 .map(x -> new Pair<>(x, ""))
                 .findFirst()
-                .orElse(new Pair<>("", ""));
+                .orElseGet(() -> new Pair<>("", ""));
     }
 }

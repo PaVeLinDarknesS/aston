@@ -9,26 +9,14 @@ public class GameRoundInfo {
     private final WordValidator validator;
     private int maxAttempts;
 
+    public static GameRoundInfo.GameRoundBuilder builder() {
+        return new GameRoundInfo.GameRoundBuilder();
+    }
+
     private GameRoundInfo(GameRoundBuilder builder) {
         this.secretWord = builder.secretWord;
         this.maxAttempts = builder.maxAttempts;
         this.validator = builder.validator;
-    }
-
-    public Pair<String, String> getSecretWord() {
-        return secretWord;
-    }
-
-    public int getMaxAttempts() {
-        return maxAttempts;
-    }
-
-    public WordValidator getValidator() {
-        return validator;
-    }
-
-    public void setMaxAttempts(int maxAttempts) {
-        this.maxAttempts = maxAttempts;
     }
 
     public static class GameRoundBuilder {
@@ -55,4 +43,21 @@ public class GameRoundInfo {
             return new GameRoundInfo(this);
         }
     }
+
+    public Pair<String, String> getSecretWord() {
+        return secretWord;
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
+    }
+
+    public WordValidator getValidator() {
+        return validator;
+    }
+
+    public void setMaxAttempts(int maxAttempts) {
+        this.maxAttempts = maxAttempts;
+    }
+
 }

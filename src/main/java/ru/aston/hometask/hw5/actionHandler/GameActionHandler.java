@@ -70,7 +70,7 @@ public class GameActionHandler {
     }
 
     private GameRoundInfo getNewRound() {
-        return new GameRoundInfo.GameRoundBuilder()
+        return GameRoundInfo.builder()
                 .maxAttempts(GameActionHandler.DEFAULT_ATTEMPTS)
                 .secretWord(nounGenerator.getNewWord())
                 .validator(wordValidator)
